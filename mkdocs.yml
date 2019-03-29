@@ -1,0 +1,12 @@
+site_name: FastSeller XT API
+site_author: Felipe Martins <felipe.martins.dev@gmail.com>
+docs_dir: docs/book
+site_dir: docs/html
+theme: readthedocs
+dev_addr: 127.0.0.1:8866
+extra_css:
+  - css/rtd-extra.css
+nav:
+  - Primeiros passos: index.md
+  - Instalação: installation.md
+  - API: api.md
