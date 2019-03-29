@@ -28,6 +28,7 @@ Preparando o ambiente
 - Python 2.7 (isso *deveria* ser compatível com Python 3, mas não foi testado)
 - [GNU Make](https://www.gnu.org/software/make/)
 - [pip](https://pypi.org/project/pip/)
+- [Virtualenv](https://virtualenv.pypa.io/en/latest/)
 - Git (opcional) - Necessário se a obtenção so source-code é via `git clone` (que é o recomendado) 
 - SQLite 3 - Isso *deveria* vir por padrão com o Python.
 
