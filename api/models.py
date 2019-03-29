@@ -43,7 +43,7 @@ class AppPublishing(models.Model):
     customer = models.ForeignKey(Customer)
     release = models.ForeignKey(Release)
     # data em que a versão foi disponibilizada para o usuário.
-    pub_date = models.DateTimeField('pub_date', default=timezone.now)
+    pub_date = models.DateTimeField('pub_date', auto_now_add=True)
 
     def __str__(self):
         return "{} - {}".format(self.customer, self.release)
