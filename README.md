@@ -33,8 +33,7 @@ Siga o link para a documentação para mais detalhes:
 FAQ
 ---
 
-**Q: Por que decidi usar Django Rest Framework ao invés de algo mais "lightweight"
-como [Flask](http://flask.pocoo.org/), [Bottle](https://bottlepy.org) ou [responder](https://python-responder.org/)?**  
+**Q: Por que decidi usar Django Rest Framework ao invés de algo mais "lightweight" como [Flask](http://flask.pocoo.org/), [Bottle](https://bottlepy.org) ou [responder](https://python-responder.org/)?**  
   
 **R:** Primeiramente, deixe-me falar: Amo Flask e qualquer projeto do pocoo. Os projetos do Kennet Reitz são sempre inovadores e feitos com fito em experiência do desenvolvedor (DX).
 [Armin Ronacher - AKA @mitsuhiko](https://twitter.com/mitsuhiko) e [Kenneth Reitz](https://twitter.com/kennethreitz) são programadores que admiro muito.
