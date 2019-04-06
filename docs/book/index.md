@@ -1,7 +1,7 @@
 Bem-vindo a documentação do FastSeller XT
 =========================================
 
-Se você quer uma visão geral do projeto ou código-fonte, visite o repositório do projeto [aqui](https://bitbucket.org/felipsmartins/fastsellerxt).
+Se você quer uma visão geral do projeto ou código-fonte, visite o repositório do projeto [aqui](https://github.com/felipsmartins/drf-reman).
 
 Introdução
 ----------
@@ -10,12 +10,12 @@ Este projeto é sobre um sistema que tem como finalidade fazer a gestão das
 versões publicadas/disponibilizadas do aplicativo **FastSeller XT** para os
 clientes/usuários deste sistema.  
 Todas as ações principais para este gerenciamento é feita através dos endpoints
-da [API](/api).
+da [API](/drf-reman/api/).
 
 **Para onde ir agora?**
   
 Para começar a interagir com a API, siga com as intruções de
-[instalação](/installation) na página a seguir.
+[instalação](/drf-reman/installation/) na página a seguir.
  
  > **Nota**:  
  > É interessante ler a seção a seguir para familiarizar-se com a 

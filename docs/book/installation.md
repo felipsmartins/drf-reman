@@ -62,13 +62,13 @@ Clonando e instalando as dependências específicas
 A primeira coisa que você deve ter em mãos é o source-code do projeto.
 Se você não o recebeu como arquivo comprimido, então clone o repositório
 da seguinte URL:  
-[https://bitbucket.org/felipsmartins/fastsellerxt](https://bitbucket.org/felipsmartins/fastsellerxt)  
+[https://github.com/felipsmartins/drf-reman](https://github.com/felipsmartins/drf-reman)  
 
 Clonando o repositório é a forma recomandada.
 Então as instruções são:
 
 <div class='console'>
-$ git clone https://bitbucket.org/felipsmartins/fastsellerxt
+$ git clone https://github.com/felipsmartins/drf-reman
 $ cd fastsellerxt/
 $ virtualenv --python=python2.7 virtualenv
 $ source virtualenv/bin/activate
@@ -88,7 +88,7 @@ $ make serve
 
 **Para onde ir agora?**  
 Agora que temos a aplicação rodando, você pode consultar a seção específica para ela.
-Há uma [página](/api) específica descrevendo os endpoints da [API](/api).
+Há uma [página](/drf-reman/api) específica descrevendo os endpoints da [API](/drf-reman/api).
 
 ---
 
