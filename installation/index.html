@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Felipe Martins <felipe.martins.dev@gmail.com>">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Instalação - FastSeller XT API</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/rtd-extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Instala\u00e7\u00e3o";
+    var mkdocs_page_input_path = "installation.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> FastSeller XT API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Primeiros passos</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Instalação</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#instalacao-intro">Instalação - intro</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#preparando-o-ambiente">Preparando o ambiente</a></li>
+        
+            <li><a class="toctree-l3" href="#clonando-e-instalando-as-dependencias-especificas">Clonando e instalando as dependências específicas</a></li>
+        
+            <li><a class="toctree-l3" href="#gerando-essa-documentacao">Gerando essa documentação</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../api/">API</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">FastSeller XT API</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Instalação</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>Algumas palavaras chaves como:
+"MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT",
+"RECOMMENDED",  "MAY", e "OPTIONAL" que podem ocorrer nesse documento (mas traduzidas)
+são interpretadas como descritas no <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.</p>
+<h1 id="instalacao-intro">Instalação - intro</h1>
+<p>Esta página tem como intenção guiar no processo de instalação do projeto para
+uso API.<br />
+A aplicação foi escrita em Python (versão 2.7) e <a href="https://docs.djangoproject.com">Django Framework</a> 1.11. </p>
+<p><strong>Considerações  iniciais</strong><br />
+O proceso de preparação e instalação assume que você está em algum ambiente
+UNIX, preferencialmente, Linux. Apesar disso, <em>não deveria</em> 
+ser um impeditivo tentar em ambiente como Windows, embora passos adicionais,
+não cobertos aqui, <em>possam</em> ser necessário.</p>
+<blockquote>
+<p>Todo o projeto foi desenvolvido e testado no <a href="http://debian.org/">GNU/Debian</a>, versão 9.</p>
+</blockquote>
+<h2 id="preparando-o-ambiente">Preparando o ambiente</h2>
+<p><strong>Requerimentos inicias</strong></p>
+<ul>
+<li>Python 2.7 (isso <em>deveria</em> ser compatível com Python 3, mas não foi testado)</li>
+<li><a href="https://www.gnu.org/software/make/">GNU Make</a></li>
+<li><a href="https://pypi.org/project/pip/">pip</a></li>
+<li><a href="https://virtualenv.pypa.io/en/latest/">Virtualenv</a></li>
+<li>Git (opcional) - Necessário se a obtenção so source-code é via <code>git clone</code> (que é o recomendado) </li>
+<li>SQLite 3 - Isso <em>deveria</em> vir por padrão com o Python.</li>
+</ul>
+<p><em>Instalando o GNU Make</em><br />
+Apesar de opcional para o projeto, as receitas do Makefile ajudam a automatizar ou 
+reduzir algumas sequências de comandos. No entando, é necessário ter o executável do GNU Make 
+no sistema (provavelmente você já o tenha, cheque: <code>$ make --version</code>).
+Para obter informações sobre como instalar o GNU Make, 
+clique <a href="https://www.gnu.org/software/make/">aqui</a>.  </p>
+<p>Se você está no Debian (ou <a href="https://help.ubuntu.com/community/InstallingCompilers">Ubuntu</a>),
+por exemplo, o processo de instalação é mais ou menos como isso:</p>
+<div class='console'>
+# Ubuntu seria: apt-get install build-essential
+$ apt install make
+$ make --version
+GNU Make 4.1
+Compilado para x86_64-pc-linux-gnu
+Copyright (C) 1988-2014 Free Software Foundation, Inc.
+...
+</div>
+
+<p>Uma vez que você se certificou que o make está instalado, você pode seguir para próxima seção e 
+de fato instalar a aplicação e suas dependências.</p>
+<h2 id="clonando-e-instalando-as-dependencias-especificas">Clonando e instalando as dependências específicas</h2>
+<p>A primeira coisa que você deve ter em mãos é o source-code do projeto.
+Se você não o recebeu como arquivo comprimido, então clone o repositório
+da seguinte URL:<br />
+<a href="https://bitbucket.org/felipsmartins/fastsellerxt">https://bitbucket.org/felipsmartins/fastsellerxt</a>  </p>
+<p>Clonando o repositório é a forma recomandada.
+Então as instruções são:</p>
+<div class='console'>
+$ git clone https://bitbucket.org/felipsmartins/fastsellerxt
+$ cd fastsellerxt/
+$ virtualenv --python=python2.7 virtualenv
+$ source virtualenv/bin/activate
+$ pip install -r requirements/prod.txt
+$ python manage.py migrate api
+
+</div>
+
+<p>Uma vez que tudo está instalado, tudo que você precisa fazer agora é executar
+o built-in webserver e interagir com a API.  </p>
+<div class='console'>
+$ python manage.py runserver
+# ou use make, se tiver configurado
+$ make serve
+</div>
+
+<p><strong>Para onde ir agora?</strong><br />
+Agora que temos a aplicação rodando, você pode consultar a seção específica para ela.
+Há uma <a href="/api">página</a> específica descrevendo os endpoints da <a href="/api">API</a>.</p>
+<hr />
+<h2 id="gerando-essa-documentacao">Gerando essa documentação</h2>
+<p>Essa seção é destinada para aqueles que querem editar ou construir a
+documentação a partir do source-code.
+Esses arquivos se encontram em sob o diretório <code>docs/book</code>.
+A documentação é construída com a ferramenta <a href="http://www.mkdocs.org/">mkdocs</a> e
+podemos instalá-la via pip.  </p>
+<p>Se você tem o make instalado e seu virtual environment está ativo, então:</p>
+<div class='console'>
+$ make docs
+
+</div>
+
+<p>ou manualmente: </p>
+<div class='console'>
+$ pip install -r requirements/local.txt
+$ mkdocs build --clean
+
+</div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api/" class="btn btn-neutral float-right" title="API">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Primeiros passos"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

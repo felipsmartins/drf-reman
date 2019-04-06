@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="Felipe Martins <felipe.martins.dev@gmail.com>">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>API - FastSeller XT API</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/rtd-extra.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "API";
+    var mkdocs_page_input_path = "api.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> FastSeller XT API</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Primeiros passos</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../installation/">Instalação</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">API</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#visao-geral">Visão geral</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#customers-endpoint">Customers endpoint</a></li>
+        
+            <li><a class="toctree-l3" href="#releases-endpoint">Releases endpoint</a></li>
+        
+            <li><a class="toctree-l3" href="#app-publishing-endpoint">App Publishing endpoint</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">FastSeller XT API</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="visao-geral">Visão geral</h1>
+<p>Esta página descreve os recursos e endpoints da aplicação FastSeller XT REST API.<br />
+Os recursos da API podem ser acessados livremente, não há qualquer autenticação.
+Os recursos abordados a seguir são:  </p>
+<ul>
+<li>Customers</li>
+<li>Releases</li>
+<li>App Publishing</li>
+</ul>
+<blockquote>
+<p><strong>Nota 1:</strong><br />
+Talvez você queira voltar a seção sobre terminologia apresentada
+na página de <a href="/">introdução</a>.<br />
+<strong>Nota 2:</strong><br />
+para efeitos de illustração, vamos assumir durante o documento
+que  o endereço da API é: <code>http://127.0.0.1/api/v1</code></p>
+</blockquote>
+<p><strong>CRUD: Create, Retrieve, Update and Destroy</strong><br />
+Para executar uma ação sobre um dado recurso, uma requisição HTTP é feita para um URL
+que um identifica usando um verbo HTTP apropriado.</p>
+<table>
+<thead>
+<tr>
+<th>Verbo</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HEAD</td>
+<td>Pode ser emitido contra um recurso para obter informações de HTTP header</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>Usado para recuperar recursos</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>Usado para criar recursos</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>Usado para atualizar um dado recurso</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>Usado para atualizar um dado recurso</td>
+</tr>
+</tbody>
+</table>
+<p>A representação interna das entidades é com segue:</p>
+<p><img alt="image" src="../chart.svg" /></p>
+<p><strong>Acesso da API pelo navegador</strong><br />
+Como esta aplicação está no topo do DRF, então podemos nos beneficiar da
+<a href="https://www.django-rest-framework.org/topics/browsable-api/">Browsable API</a>,
+digitando o endereço (ex: <code>http://127.0.0.1:8000/api/v1/</code>) no navegador:</p>
+<p><img alt="image" src="../browsable_api.png" /></p>
+<p>Ou a versão em JSON: <code>http://127.0.0.1:8000/api/v1/?format=json</code>.<br />
+A seção seguinte lista e documenta as operações sobre os endpoints.  </p>
+<hr />
+<h2 id="customers-endpoint">Customers endpoint</h2>
+<p><strong>GET - Listagem</strong> </p>
+<pre><code class="bash">curl -H 'Accept: application/json; indent=4' -X 'GET' 'http://127.0.0.1:8000/api/v1/customers'
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">[
+    {
+        &quot;uuid&quot;: &quot;6193e9b3-7918-4ccc-8c38-be35602df2a1&quot;,
+        &quot;name&quot;: &quot;FooBar LTDA&quot;
+    },
+    {
+        &quot;uuid&quot;: &quot;4e888c18-5819-4da1-b4b9-0d495f7a4a2a&quot;,
+        &quot;name&quot;: &quot;ALIANCA DISTRIBUIDORES LTD&quot;
+    }
+]
+</code></pre>
+
+<p><strong>POST - Criando um cliente</strong><br />
+Parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>O nome do cliente</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">curl -H 'Content-Type: application/json' -X 'POST' 'http://127.0.0.1:8000/api/v1/customers' \
+-d '{&quot;name&quot;: &quot;EMPRESA XYZ&quot;}'
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="bash">{&quot;uuid&quot;:&quot;e44ded41-e6f9-4cdb-a136-0f2d8977f2bb&quot;,&quot;name&quot;:&quot;EMPRESA XYZ&quot;}
+</code></pre>
+
+<p><strong>PUT - Editando um cliente</strong><br />
+Parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>O nome do cliente</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">curl -H 'Content-Type: application/json' \
+     -X 'PUT' 'http://127.0.0.1:8000/api/v1/customers/e44ded41-e6f9-4cdb-a136-0f2d8977f2bb' \
+     -d '{&quot;name&quot;: &quot;EMPRESA ltd&quot;}'
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="bash">{&quot;uuid&quot;:&quot;e44ded41-e6f9-4cdb-a136-0f2d8977f2bb&quot;,&quot;name&quot;:&quot;EMPRESA ltd&quot;}
+</code></pre>
+
+<hr />
+<h2 id="releases-endpoint">Releases endpoint</h2>
+<p><strong>GET - Listagem</strong> </p>
+<pre><code class="bash">curl -H 'Accept: application/json; indent=4' -X 'GET' 'http://127.0.0.1:8000/api/v1/releases'
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">[
+    {
+        &quot;uuid&quot;: &quot;42cdb17a-5c19-46be-819c-d6a06672c04d&quot;,
+        &quot;version&quot;: &quot;1.2.0&quot;,
+        &quot;codename&quot;: &quot;&quot;,
+        &quot;release_date&quot;: &quot;2019-03-27T05:03:16.467478Z&quot;
+    },
+    {
+        &quot;uuid&quot;: &quot;fb0276a6-11ab-4457-b9a6-ee6ba7e2b6e9&quot;,
+        &quot;version&quot;: &quot;1.0.1&quot;,
+        &quot;codename&quot;: &quot;Ambar&quot;,
+        &quot;release_date&quot;: &quot;2019-03-27T03:36:39.288735Z&quot;
+    }
+]
+</code></pre>
+
+<p><strong>POST - Criando um release/versão</strong><br />
+Parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>obrigatório?</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>sim</td>
+<td>O código da versão, como: 1.0.1</td>
+</tr>
+<tr>
+<td>codename</td>
+<td>string</td>
+<td>não</td>
+<td>O code name da versão</td>
+</tr>
+<tr>
+<td>release_date</td>
+<td>string</td>
+<td>não</td>
+<td>A data de release. Formato ISO8601</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Nota</strong><br />
+<em>O <a href="https://en.wikipedia.org/wiki/ISO_8601">formato</a> para <code>release_date</code> é algo como: 2019-03-29T09:40:56-03:00</em></p>
+</blockquote>
+<pre><code class="bash">curl -H 'Content-Type: application/json' -X 'POST' 'http://127.0.0.1:8000/api/v1/releases' \
+     -d '{&quot;version&quot;: &quot;3.1.16&quot;, &quot;codename&quot;: &quot;steel&quot;, &quot;release_date&quot;: &quot;2019-03-29T09:40:56-03:00&quot;}'
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">{
+  &quot;uuid&quot;: &quot;66c58e53-93f3-4df8-be02-c8670250f851&quot;,
+  &quot;version&quot;: &quot;3.1.16&quot;,
+  &quot;codename&quot;: &quot;steel&quot;,
+  &quot;release_date&quot;: &quot;2019-03-29T12:40:56Z&quot;
+}
+</code></pre>
+
+<p><strong>PUT - Editando um release</strong><br />
+Parâmetros:</p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>obrigatório?</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>sim</td>
+<td>O código da versão, como: 1.0.1</td>
+</tr>
+<tr>
+<td>codename</td>
+<td>string</td>
+<td>não</td>
+<td>O code name da versão</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">curl -H 'Content-Type: application/json' \
+     -X 'PUT' 'http://127.0.0.1:8000/api/v1/releases/66c58e53-93f3-4df8-be02-c8670250f851' \
+     -d '{&quot;version&quot;: &quot;3.1.22&quot;, &quot;codename&quot;: &quot;Bee&quot;}'
+
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">{
+  &quot;uuid&quot;: &quot;66c58e53-93f3-4df8-be02-c8670250f851&quot;,
+  &quot;version&quot;: &quot;3.1.22&quot;,
+  &quot;codename&quot;: &quot;Bee&quot;,
+  &quot;release_date&quot;: &quot;2019-03-29T12:40:56Z&quot;
+}
+</code></pre>
+
+<hr />
+<h2 id="app-publishing-endpoint">App Publishing endpoint</h2>
+<p>Como vimos na parte inicial da documentação, na seção terminologia,
+uma publicação representa um específico release do disponibilizado para um cliente.<br />
+Tem informações como a versão recebida pelo cliente, o próprio cliente e quando
+este recebeu o update/release.</p>
+<p><strong>GET - Listagem</strong> </p>
+<p>Parâmetros/filtros:  </p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>obrigatório?</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>customer</td>
+<td>string</td>
+<td>não</td>
+<td>nome ou parte do nome de um cliente</td>
+</tr>
+<tr>
+<td>pub_date</td>
+<td>string</td>
+<td>não</td>
+<td>data (ISO8601) de quando recebeu a atualização</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>não</td>
+<td>versão para filtrar</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">curl -H 'Accept: application/json; indent=4' -X 'GET' 'http://127.0.0.1:8000/api/v1/publishing'
+</code></pre>
+
+<p>ou</p>
+<pre><code class="bash">curl -H 'Accept: application/json; indent=4' -X 'GET' \
+  'http://127.0.0.1:8000/api/v1/publishing?customer=LTDA&amp;pub_date=2019-03-27T06:40&amp;version=1.2.0'
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">[
+    {
+        &quot;uuid&quot;: &quot;2c2f98df-0ede-4315-9c04-bb36a98baf9e&quot;,
+        &quot;customer&quot;: &quot;6193e9b3-7918-4ccc-8c38-be35602df2a1&quot;,
+        &quot;release&quot;: &quot;fb0276a6-11ab-4457-b9a6-ee6ba7e2b6e9&quot;,
+        &quot;pub_date&quot;: &quot;2019-03-27T06:12:41.293705Z&quot;
+    },
+    {
+        &quot;uuid&quot;: &quot;a99f9767-c7ea-4054-9116-d89522402ebd&quot;,
+        &quot;customer&quot;: &quot;6193e9b3-7918-4ccc-8c38-be35602df2a1&quot;,
+        &quot;release&quot;: &quot;42cdb17a-5c19-46be-819c-d6a06672c04d&quot;,
+        &quot;pub_date&quot;: &quot;2019-03-27T06:43:22.117721Z&quot;
+    }
+]
+</code></pre>
+
+<p><strong>POST - Criando/Disponibilizando uma release para um cliente</strong>  </p>
+<p>Parâmetros:  </p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>obrigatório?</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>customer</td>
+<td>string</td>
+<td>sim</td>
+<td>o identificador (uuid) de um cliente</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>sim</td>
+<td>o identificador (uuid) de um release</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">customer_id=5bb566f1-d259-4023-a064-6968a3c052f8
+release_id=66c58e53-93f3-4df8-be02-c8670250f851
+
+curl -H 'Content-Type: application/json' -X 'POST' 'http://127.0.0.1:8000/api/v1/publishing' \
+     -d '{&quot;customer&quot;: &quot;$customer_id&quot;, &quot;release&quot;: &quot;$release_id&quot;}'
+
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">{
+  &quot;uuid&quot;: &quot;b567193a-a267-4bd0-8652-3c8e7b4ca4c5&quot;,
+  &quot;customer&quot;: &quot;5bb566f1-d259-4023-a064-6968a3c052f8&quot;,
+  &quot;release&quot;: &quot;66c58e53-93f3-4df8-be02-c8670250f851&quot;,
+  &quot;pub_date&quot;: &quot;2019-03-29T16:19:16.891829Z&quot;
+}
+</code></pre>
+
+<p>Possíveis erros ao tentar atribuir um release para um cliente são descritos a seguir.  </p>
+<p>1) <em>Versão sendo aplicada é mais antiga que a que o cliente possui:</em></p>
+<pre><code class="bash">curl -iH 'Content-Type: application/json' -X 'POST' 'http://127.0.0.1:8000/api/v1/publishing' 
+    -d $payload
+
+HTTP/1.0 400 Bad Request
+Server: WSGIServer/0.1 Python/2.7.13
+...
+
+{&quot;non_field_errors&quot;:[&quot;A versão sendo aplicada é mais antiga que a que o cliente possui.&quot;]}
+</code></pre>
+
+<p>2) <em>Cliente já tem a versão que está sendo aplicada. Nesse caso você receberá o seguinte retorno:</em></p>
+<pre><code class="bash">curl -iH 'Content-Type: application/json' -X 'POST' 'http://127.0.0.1:8000/api/v1/publishing' 
+    -d $payload
+
+HTTP/1.0 400 Bad Request
+Server: WSGIServer/0.1 Python/2.7.13
+...
+
+{&quot;non_field_errors&quot;:[&quot;Cliente já possui esta versão.&quot;]}
+</code></pre>
+
+<p><strong>PUT - Editando um registro de atribuição de release</strong>  </p>
+<p>Parâmetros:  </p>
+<table>
+<thead>
+<tr>
+<th>nome</th>
+<th>tipo</th>
+<th>obrigatório?</th>
+<th>descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>customer</td>
+<td>string</td>
+<td>sim</td>
+<td>o identificador (uuid) de um cliente</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>sim</td>
+<td>o identificador (uuid) de um release</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="bash">customer_id=5bb566f1-d259-4023-a064-6968a3c052f8
+release_id=66c58e53-93f3-4df8-be02-c8670250f851
+id=b567193a-a267-4bd0-8652-3c8e7b4ca4c5
+
+curl -H 'Content-Type: application/json' -X 'PUT' 'http://127.0.0.1:8000/api/v1/publishing/$id' \
+     -d '{&quot;customer&quot;: &quot;$customer_id&quot;, &quot;release&quot;: &quot;$release_id&quot;}'
+
+</code></pre>
+
+<p>Exemplo de retorno</p>
+<pre><code class="json">{
+  &quot;uuid&quot;: &quot;b567193a-a267-4bd0-8652-3c8e7b4ca4c5&quot;,
+  &quot;customer&quot;: &quot;5bb566f1-d259-4023-a064-6968a3c052f8&quot;,
+  &quot;release&quot;: &quot;66c58e53-93f3-4df8-be02-c8670250f851&quot;,
+  &quot;pub_date&quot;: &quot;2019-03-29T16:19:16.891829Z&quot;
+}
+</code></pre>
+
+<p>Os demais possíveis retornos são os mesmos de quando estamos criando
+um registro via POST.</p>
+<p><strong>DELETE - Excluindo recursos</strong></p>
+<p>Para todos os recursos descritos acima, a exclusão segue o mesmo padrão de request:</p>
+<pre><code class="bash">curl -X 'DELETE' 'http://127.0.0.1:8000/api/v1/{resource}/{id}'
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../installation/" class="btn btn-neutral" title="Instalação"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../installation/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
