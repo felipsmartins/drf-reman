@@ -88,7 +88,7 @@ $ make serve
 
 **Para onde ir agora?**  
 Agora que temos a aplicação rodando, você pode consultar a seção específica para ela.
-Há uma [página](/api) específica descrevendo os endpoints da [API](/api).
+Há uma [página](/drf-reman/api) específica descrevendo os endpoints da [API](/drf-reman/api).
 
 ---
 

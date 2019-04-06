@@ -11,7 +11,7 @@ Os recursos abordados a seguir são:
 
 > **Nota 1:**  
 > Talvez você queira voltar a seção sobre terminologia apresentada
-> na página de [introdução](/).  
+> na página de [introdução](/drf-reman).  
 > **Nota 2:**  
 > para efeitos de illustração, vamos assumir durante o documento
 > que  o endereço da API é: `http://127.0.0.1/api/v1`
