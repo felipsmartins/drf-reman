@@ -1,3 +1,5 @@
 docs/
 virtualenv/
 .idea/
+*.pyc
+*.sqlite3
