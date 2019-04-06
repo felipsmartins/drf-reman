@@ -1,7 +1,7 @@
 Bem-vindo a documentação do FastSeller XT
 =========================================
 
-Se você quer uma visão geral do projeto ou código-fonte, visite o repositório do projeto [aqui](https://bitbucket.org/felipsmartins/fastsellerxt).
+Se você quer uma visão geral do projeto ou código-fonte, visite o repositório do projeto [aqui](https://github.com/felipsmartins/drf-reman).
 
 Introdução
 ----------
