@@ -5,6 +5,7 @@
 # Environments
 .env
 virtualenv/
+venv/
 .vscode/
 
 # Documentação
